@@ -1,0 +1,32 @@
+<hb-header>
+	<p levels>settings / rooms / new room</p>
+
+	<div content>
+		<p>Room Details</p>
+	</div>
+</hb-header>
+<div class="container">
+	<form [formGroup]="roomForm">
+		<div class="row">
+			<div class="col-sm-3"></div>
+			<div class="col-sm-6 data-container">
+				<div class="row">
+					<mat-form-field appearance="fill">
+						<mat-label>Name</mat-label>
+						<input matInput placeholder="Author Name" [formControl]="name" required>
+						<mat-error *ngIf="name.invalid">{{getErrorMessage()}}</mat-error>
+					</mat-form-field>
+				</div>
+				<div class="row">
+					<div class="col-sm-6">
+						<button [disabled]="roomForm.invalid" (click)="addRoom()" type="submit" mat-raised-button color="primary">Add Author</button>
+					</div>
+					<div class="col-sm-6">
+						<button (click)="roomForm.reset()" mat-raised-button>Reset</button>
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-3"></div>
+		</div>
+	</form>
+</div>

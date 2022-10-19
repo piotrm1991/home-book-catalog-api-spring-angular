@@ -1,0 +1,32 @@
+<hb-header>
+	<p levels>publishers / new publisher</p>
+
+	<div content>
+		<p>Publisher Details</p>
+	</div>
+</hb-header>
+<div class="container">
+	<form [formGroup]="publisherForm">
+		<div class="row">
+			<div class="col-sm-3"></div>
+			<div class="col-sm-6 data-container">
+				<div class="row">
+					<mat-form-field appearance="fill">
+						<mat-label>Name</mat-label>
+						<input matInput placeholder="Publisher Name" [formControl]="name" required>
+						<mat-error *ngIf="name.invalid">{{getErrorMessage()}}</mat-error>
+					</mat-form-field>
+				</div>
+				<div class="row">
+					<div class="col-sm-6">
+						<button [disabled]="publisherForm.invalid" (click)="addPublisher()" type="submit" mat-raised-button color="primary">Add Publisher</button>
+					</div>
+					<div class="col-sm-6">
+						<button (click)="publisherForm.reset()" mat-raised-button>Reset</button>
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-3"></div>
+		</div>
+	</form>
+</div>

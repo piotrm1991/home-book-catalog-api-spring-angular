@@ -1,0 +1,56 @@
+<hb-header>s
+	<p levels>settings / shelves / {{ shelf.letter }} - {{ shelf.number }}</p>
+
+	<div content>
+		<p>Shelf Details</p>
+	</div>
+</hb-header>
+<div class="container">
+	<form [formGroup]="shelfForm">
+		<div class="row">
+			<div class="col-sm-4"></div>
+			<div class="col-sm-4 data-container">
+				<div class="row">
+					<mat-form-field appearance="fill" style="width: 100%;">
+						<mat-label>Room</mat-label>
+						<mat-select [formControl]="roomControl" required [(value)]="selectedRoom">
+							<mat-option [value]="selectedRoom" disabled="">{{ selectedRoom.name }}</mat-option>
+							<mat-option *ngFor="let room of rooms" [value]="room">
+									{{room.name}}
+							</mat-option>
+						</mat-select>
+						<mat-error *ngIf="roomControl.invalid">{{getErrorMessageRoom()}}</mat-error>
+					</mat-form-field>
+				</div>
+				<div class="row">
+					<div class="col-sm-6">
+						<mat-form-field appearance="fill">
+							<mat-label>Letter</mat-label>
+							<input matInput placeholder="Letter" [formControl]="letterControl" required>
+							<mat-error *ngIf="letterControl.invalid">{{getErrorMessageLetter()}}</mat-error>
+						</mat-form-field>
+					</div>
+					<div class="col-sm-6">
+						<mat-form-field appearance="fill">
+							<mat-label>Number</mat-label>
+							<input matInput placeholder="Number" [formControl]="numberControl" required>
+							<mat-error *ngIf="numberControl.invalid">{{getErrorMessageNumber()}}</mat-error>
+						</mat-form-field>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-sm-4">
+						<button [disabled]="shelfForm.invalid" (click)="updateShelf()" type="submit" mat-raised-button color="primary">Update Shelf</button>
+					</div>
+					<div class="col-sm-4">
+						<button (click)="resetToOriginal()" mat-raised-button>Reset</button>
+					</div>
+					<div class="col-sm-4">
+						<button [disabled]="shelfForm.invalid" (click)="deleteShelf()" mat-raised-button color="warn">Delete Shelf</button>
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-4"></div>
+		</div>
+	</form>
+</div>

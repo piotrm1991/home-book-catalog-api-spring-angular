@@ -1,0 +1,35 @@
+<hb-header>s
+	<p levels>settings / rooms / {{ room.name }}</p>
+
+	<div content>
+		<p>Room Details</p>
+	</div>
+</hb-header>
+<div class="container">
+	<form [formGroup]="roomForm">
+		<div class="row">
+			<div class="col-sm-3"></div>
+			<div class="col-sm-6 data-container">
+				<div class="row">
+					<mat-form-field appearance="fill">
+						<mat-label>Name</mat-label>
+						<input matInput placeholder="Room Name" [formControl]="name" required>
+						<mat-error *ngIf="name.invalid">{{getErrorMessage()}}</mat-error>
+					</mat-form-field>
+				</div>
+				<div class="row">
+					<div class="col-sm-4">
+						<button [disabled]="roomForm.invalid" (click)="updateRoom()" type="submit" mat-raised-button color="primary">Update Room</button>
+					</div>
+					<div class="col-sm-4">
+						<button (click)="resetToOriginal()" mat-raised-button>Reset</button>
+					</div>
+					<div class="col-sm-4">
+						<button [disabled]="roomForm.invalid" (click)="deleteRoom()" mat-raised-button color="warn">Delete Room</button>
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-3"></div>
+		</div>
+	</form>
+</div>

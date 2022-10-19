@@ -1,0 +1,32 @@
+<hb-header>
+	<p levels>settings / status types / new status type</p>
+
+	<div content>
+		<p>Status Type Details</p>
+	</div>
+</hb-header>
+<div class="container">
+	<form [formGroup]="statusTypeForm">
+		<div class="row">
+			<div class="col-sm-3"></div>
+			<div class="col-sm-6 data-container">
+				<div class="row">
+					<mat-form-field appearance="fill">
+						<mat-label>Name</mat-label>
+						<input matInput placeholder="Status Type Name" [formControl]="name" required>
+						<mat-error *ngIf="name.invalid">{{getErrorMessage()}}</mat-error>
+					</mat-form-field>
+				</div>
+				<div class="row">
+					<div class="col-sm-6">
+						<button [disabled]="statusTypeForm.invalid" (click)="addStatusType()" type="submit" mat-raised-button color="primary">Add Status Type</button>
+					</div>
+					<div class="col-sm-6">
+						<button (click)="statusTypeForm.reset()" mat-raised-button>Reset</button>
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-3"></div>
+		</div>
+	</form>
+</div>

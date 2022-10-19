@@ -1,0 +1,56 @@
+@import 'variables';
+
+body {
+	background: @background;
+}
+
+.data-header {
+	color: @white;
+	font-size: 22px;
+	text-transform: uppercase;
+	font-weight: 700;
+	margin: 15px;
+}
+
+.data-container {
+	padding: 15px;
+	background: @white;
+	margin: 15px;
+}
+
+.error {
+	background: @red;
+	color: @white;
+	font-size: 11px;
+	padding: 4px 8px;
+}
+
+.no-authors-info, 
+.no-publishers-info, 
+.no-rooms-info,
+.no-status-types-info,
+.no-shelves-info,
+.no-books-info
+{
+	text-align: center;
+	font-size: 18px;
+	text-transform: uppercase;
+	font-weight: 700;
+	color: @blue;
+	padding: 20px;
+	background: @white;
+}
+
+.row-author, 
+.row-publisher,
+.row-room,
+.row-status-type,
+.row-shelf,
+.row-book
+{
+	cursor: pointer;
+}
+
+.button-add {
+  background-color: @background-light;
+}

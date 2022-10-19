@@ -1,0 +1,35 @@
+<hb-header>s
+	<p levels>settings / status types / {{ statusType.name }}</p>
+
+	<div content>
+		<p>Status Type Details</p>
+	</div>
+</hb-header>
+<div class="container">
+	<form [formGroup]="statusTypeForm">
+		<div class="row">
+			<div class="col-sm-3"></div>
+			<div class="col-sm-6 data-container">
+				<div class="row">
+					<mat-form-field appearance="fill">
+						<mat-label>Name</mat-label>
+						<input matInput placeholder="Status Type Name" [formControl]="name" required>
+						<mat-error *ngIf="name.invalid">{{getErrorMessage()}}</mat-error>
+					</mat-form-field>
+				</div>
+				<div class="row">
+					<div class="col-sm-4">
+						<button [disabled]="statusTypeForm.invalid" (click)="updateStatusType()" type="submit" mat-raised-button color="primary">Update Status Type</button>
+					</div>
+					<div class="col-sm-4">
+						<button (click)="resetToOriginal()" mat-raised-button>Reset</button>
+					</div>
+					<div class="col-sm-4">
+						<button [disabled]="statusTypeForm.invalid" (click)="deleteStatusType()" mat-raised-button color="warn">Delete Status Type</button>
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-3"></div>
+		</div>
+	</form>
+</div>

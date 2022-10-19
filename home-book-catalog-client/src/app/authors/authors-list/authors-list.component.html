@@ -1,0 +1,43 @@
+<hb-header>
+	<p levels>authors</p>
+
+	<div content>
+		<p>List of Authors</p>
+	</div>
+</hb-header>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-3"></div>
+    <div class="col-sm-6">
+      <button class="button-add" mat-raised-button (click)="goToNewAuthor()">Add New Author</button>
+      <mat-form-field appearance="standard" class="filter-input">
+        <mat-label>Search Author</mat-label>
+        <input matInput (keyup)="applyFilter($event)" placeholder="Author Name" #input>
+      </mat-form-field>
+      <div class="mat-elevation-z8">
+        <table mat-table [dataSource]="dataSource" matSort class="hb-table">
+          
+          <ng-container matColumnDef="name">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
+            <td mat-cell *matCellDef="let row"> {{row.name}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="noBooks">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> NoBooks </th>
+            <td mat-cell *matCellDef="let row"> {{row.noBooks}} </td>
+          </ng-container>
+          
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="goToAuthorDetails(row)" class="data"></tr>
+          
+          <tr class="mat-row" *matNoDataRow>
+            <td class="mat-cell" colspan="4">No author with name {{input.value}}</td>
+          </tr>
+        </table>  
+          
+        <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of authors" class="hb-table"></mat-paginator>
+      </div>
+    </div>
+    <div class="col-sm-3"></div>
+  </div>
+</div>
